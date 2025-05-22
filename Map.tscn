@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://biks8yf20bj1s"]
+
+[ext_resource type="Texture2D" uid="uid://dc0f2c4e8xltu" path="res://ALLEN.jpg" id="1_gfjgm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Allen" type="Sprite2D" parent="."]
+position = Vector2(560, 309)
+scale = Vector2(0.521296, 0.499074)
+texture = ExtResource("1_gfjgm")
