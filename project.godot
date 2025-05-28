@@ -11,6 +11,6 @@ config_version=5
 [application]
 
 config/name="Crash Cab"
-run/main_scene="res://Map.tscn"
+run/main_scene="uid://b18txkr06kuto"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
