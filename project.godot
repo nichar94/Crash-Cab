@@ -13,4 +13,8 @@ config_version=5
 config/name="Crash Cab"
 run/main_scene="uid://b18txkr06kuto"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://Assets/icon.svg"
+config/icon="uid://bydnhpnjvnhs8"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
