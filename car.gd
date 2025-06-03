@@ -25,10 +25,12 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("ui_down"):
 		throttle = -0.5
 	
+	var steering_direction = 1 if throttle >= 0 else -1 
+	
 	if Input.is_action_pressed("ui_left"):
-		steering = -1.0
+		steering = -1.0 * steering_direction
 	elif Input.is_action_pressed("ui_right"):
-		steering = 1.0
+		steering = 1.0 * steering_direction
 	
 	apply_car_physics(throttle, steering, brake, delta)
 
