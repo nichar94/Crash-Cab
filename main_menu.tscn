@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxakpknvjf13s"]
+[gd_scene load_steps=11 format=3 uid="uid://dxakpknvjf13s"]
 
 [ext_resource type="Texture2D" uid="uid://dgmm6a6l810cb" path="res://Assets/background_city_1.jpg" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://c0ny2s5nugyf5" path="res://main_menu.gd" id="1_jix8l"]
 [ext_resource type="FontFile" uid="uid://dckftup7hiwv5" path="res://Fonts/Kenney Future Narrow.ttf" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://ddt7krlmql26p" path="res://start.gd" id="4_glbon"]
+[ext_resource type="Script" uid="uid://dwgqbh3l7334x" path="res://quit.gd" id="5_glbon"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("1_7vrkn")
@@ -43,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jix8l")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -74,6 +78,7 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_fu7sn")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
@@ -81,6 +86,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jix8l")
 theme_override_styles/normal = SubResource("StyleBoxFlat_glbon")
 text = "Start Game"
+script = ExtResource("4_glbon")
 
 [node name="setings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -88,6 +94,7 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_fu7sn")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
@@ -102,6 +109,7 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_fu7sn")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
@@ -109,6 +117,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jix8l")
 theme_override_styles/normal = SubResource("StyleBoxFlat_glbon")
 text = "Leave Game (for losers)"
+script = ExtResource("5_glbon")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -128,3 +137,6 @@ theme_override_font_sizes/font_size = 80
 text = "Crash Cab"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/start" to="VBoxContainer/start" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="_on_pressed"]

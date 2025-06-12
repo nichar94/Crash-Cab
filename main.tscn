@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://k6mrulc1ywgd"]
+[gd_scene load_steps=12 format=4 uid="uid://k6mrulc1ywgd"]
 
 [ext_resource type="Script" uid="uid://dt3xwf8xcs01w" path="res://car.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bgyn51n5abax0" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://clvqate12rc6p" path="res://Assets/bk_cars1.a.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cnwfde8rlvvlv" path="res://Assets/tilemap_packed.png" id="3_h2yge"]
+[ext_resource type="FontFile" uid="uid://dckftup7hiwv5" path="res://Fonts/Kenney Future Narrow.ttf" id="5_lquwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("3_h2yge")
@@ -649,7 +650,7 @@ friction = 0.5
 bounce = 0.4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig5kc"]
-size = Vector2(48, 99)
+size = Vector2(46, 99)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
 atlas = ExtResource("2_h2yge")
@@ -702,15 +703,17 @@ sprite_frames = SubResource("SpriteFrames_1bvp3")
 [node name="Camera2D" type="Camera2D" parent="Car"]
 limit_smoothed = true
 
-[node name="GameTimer" type="Timer" parent="."]
+[node name="CountdownTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
 offset_left = 791.0
 offset_top = 66.0
 offset_right = 994.0
 offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("5_lquwl")
 theme_override_font_sizes/font_size = 50
 text = "Time: 60"
