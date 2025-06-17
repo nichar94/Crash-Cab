@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dxakpknvjf13s"]
 
 [ext_resource type="Texture2D" uid="uid://dgmm6a6l810cb" path="res://Assets/background_city_1.jpg" id="1_7vrkn"]
-[ext_resource type="Script" uid="uid://c0ny2s5nugyf5" path="res://main_menu.gd" id="1_jix8l"]
+[ext_resource type="Script" uid="uid://c0ny2s5nugyf5" path="res://Scripts/main_menu.gd" id="1_jix8l"]
 [ext_resource type="FontFile" uid="uid://dckftup7hiwv5" path="res://Fonts/Kenney Future Narrow.ttf" id="2_fu7sn"]
-[ext_resource type="Script" uid="uid://ddt7krlmql26p" path="res://start.gd" id="4_glbon"]
-[ext_resource type="Script" uid="uid://dwgqbh3l7334x" path="res://quit.gd" id="5_glbon"]
+[ext_resource type="Script" uid="uid://ddt7krlmql26p" path="res://Scripts/start.gd" id="4_glbon"]
+[ext_resource type="Script" uid="uid://dwgqbh3l7334x" path="res://Scripts/quit.gd" id="5_glbon"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("1_7vrkn")

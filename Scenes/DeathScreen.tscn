@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjk6tdvid7j0s"]
+[gd_scene load_steps=9 format=3 uid="uid://cjk6tdvid7j0s"]
 
 [ext_resource type="Texture2D" uid="uid://06ldi3ji813i" path="res://Assets/peakpx.jpg" id="1_80igo"]
 [ext_resource type="FontFile" uid="uid://dckftup7hiwv5" path="res://Fonts/Kenney Future Narrow.ttf" id="2_gircr"]
+[ext_resource type="Script" uid="uid://iibvv6vbflaj" path="res://Scripts/return.gd" id="3_gircr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0x2kd"]
 texture = ExtResource("1_80igo")
@@ -43,7 +44,7 @@ offset_right = 1153.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_0x2kd")
 
-[node name="Button" type="Button" parent="."]
+[node name="return" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,3 +68,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_u2w2c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_c3ygo")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wugj6")
 text = "Return to menu"
+script = ExtResource("3_gircr")
+
+[connection signal="pressed" from="return" to="return" method="_on_pressed"]
