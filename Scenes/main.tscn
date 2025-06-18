@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://k6mrulc1ywgd"]
+[gd_scene load_steps=7 format=4 uid="uid://k6mrulc1ywgd"]
 
-[ext_resource type="Script" uid="uid://dt3xwf8xcs01w" path="res://Scripts/car.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bgyn51n5abax0" path="res://Scripts/main.gd" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://clvqate12rc6p" path="res://Assets/bk_cars1.a.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cnwfde8rlvvlv" path="res://Assets/tilemap_packed.png" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://uhafctl3r84w" path="res://Scenes/car.tscn" id="3_jjvhh"]
 [ext_resource type="FontFile" uid="uid://dckftup7hiwv5" path="res://Fonts/Kenney Future Narrow.ttf" id="5_lquwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
@@ -683,28 +682,6 @@ tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0xm2m"]
-friction = 0.5
-bounce = 0.4
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig5kc"]
-size = Vector2(46, 99)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
-atlas = ExtResource("2_h2yge")
-region = Rect2(59, 112, 59, 112)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1bvp3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h2yge")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1bvp3")
 
@@ -721,25 +698,8 @@ scale = Vector2(8, 8)
 tile_map_data = PackedByteArray("AAAFAAAAAAAQAAsAAAAFAAEAAAAQAAwAAAADAAIAAAAXAA4AAAD0/wIAAAAXAAwAAAD0/wMAAAAXAA0AAAACAP3/AAALAAsAAAADAP3/AAAMAAsAAAD///z/AAANAAwAAAAAAPz/AAAOAAwAAAD8//r/AAATAA4AAAAMAAUAAAAXAAoAAAAMAAYAAAAXAAsAAAAJAAQAAAAVAAsAAAAPAAQAAAAXAAkAAAAQAAEAAAAXAAoAAAAQAAIAAAAXAAsAAAAOAAEAAAAMAAIAAAAOAAAAAAAQAAoAAAANAAAAAAAPAAgAAAAPAAAAAAASAAoAAAANAP3/AAAVAAMAAAANAP7/AAAVAAUAAAANAP//AAAVAAYAAAAOAP3/AAAWAAQAAAAOAP7/AAAWAAUAAAAOAP//AAAWAAYAAAAPAP3/AAAXAAQAAAAPAP7/AAAXAAUAAAAPAP//AAAXAAYAAAAOAPz/AAAWAAMAAAAQAPj/AAAPAAQAAAAQAPn/AAAPAAUAAAAQAPr/AAAPAAYAAAARAPf/AAAQAAMAAAARAPj/AAAQAAQAAAARAPn/AAAQAAUAAAARAPr/AAAQAAYAAAASAPj/AAARAAQAAAASAPn/AAARAAUAAAASAPr/AAARAAYAAAARAPv/AAABAAoAAAASAPv/AAADAAoAAAAQAPv/AAAAAAgAAAABAAoAAAALAA4AAAACAAoAAAAMAA4AAAADAAoAAAANAA4AAAAEAAoAAAAOAA4AAADw/woAAAAXAAoAAADw/wsAAAAXAAsAAADy/w4AAAAPAAEAAADs/w4AAAAPAAEAAADs/w8AAAAPAAEAAADs/xAAAAAPAAEAAADs/xEAAAABAAIAAADs/xIAAAAPAAEAAADs/xMAAAAPAAEAAADs/xQAAAAPAAEAAADs/xUAAAABAAEAAADs/xYAAAAPAAEAAADt/w4AAAABAAIAAADt/w8AAAAPAAEAAADt/xAAAAAPAAEAAADt/xEAAAAPAAEAAADt/xIAAAAPAAEAAADt/xMAAAABAAEAAADt/xQAAAAPAAEAAADt/xUAAAAPAAEAAADt/xYAAAAPAAEAAADu/w4AAAAPAAEAAADu/w8AAAAPAAEAAADu/xAAAAAPAAEAAADu/xEAAAAPAAEAAADu/xIAAAAPAAEAAADu/xMAAAAPAAEAAADu/xQAAAAPAAEAAADu/xUAAAAPAAEAAADu/xYAAAAPAAEAAADv/w4AAAAPAAEAAADv/w8AAAAPAAEAAADv/xAAAAABAAEAAADv/xEAAAAPAAEAAADv/xIAAAAPAAEAAADv/xMAAAAPAAEAAADv/xQAAAAPAAEAAADv/xUAAAAPAAEAAADv/xYAAAAPAAEAAADw/w4AAAABAAIAAADw/w8AAAAPAAEAAADw/xAAAAAPAAEAAADw/xEAAAAPAAEAAADw/xIAAAAPAAEAAADw/xMAAAABAAIAAADw/xQAAAAPAAEAAADw/xUAAAAPAAEAAADw/xYAAAABAAEAAADx/w4AAAAPAAEAAADx/w8AAAAPAAEAAADx/xAAAAAPAAEAAADx/xIAAAABAAEAAADx/xUAAAAPAAEAAADx/xYAAAAPAAEAAADy/w8AAAAPAAEAAADy/xAAAAABAAIAAADy/xEAAAAPAAEAAADy/xIAAAAPAAEAAADy/xMAAAABAAIAAADy/xQAAAABAAEAAADy/xUAAAAPAAEAAADy/xYAAAAPAAEAAADx/xEAAAABAAAAAADx/xQAAAABAAAAAADx/xMAAAABAAAAAAD6/wsAAAAWAAsAAAD7/woAAAAXAAoAAAD7/wsAAAAXAAsAAAAOAPn/AAAXAAoAAAAOAPr/AAAXAAsAAAA=")
 tile_set = SubResource("TileSet_1bvp3")
 
-[node name="Car" type="RigidBody2D" parent="."]
-z_as_relative = false
+[node name="Car" parent="." instance=ExtResource("3_jjvhh")]
 position = Vector2(462, 345)
-physics_material_override = SubResource("PhysicsMaterial_0xm2m")
-script = ExtResource("1_0xm2m")
-engine_power = 1000.0
-steering_power = 27.0
-drift_factor = 0.7
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Car"]
-position = Vector2(2, 1.5)
-shape = SubResource("RectangleShape2D_ig5kc")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Car"]
-sprite_frames = SubResource("SpriteFrames_1bvp3")
-
-[node name="Camera2D" type="Camera2D" parent="Car"]
-limit_smoothed = true
 
 [node name="CountdownTimer" type="Timer" parent="."]
 autostart = true

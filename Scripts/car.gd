@@ -14,12 +14,13 @@ func _ready():
 	gravity_scale = 0
 	linear_damp = 1.0
 	angular_damp = 3.0
+	add_to_group("Car")
 
 func _physics_process(delta):
 	var throttle = 0.0
 	var steering = 0.0
 	var brake = 0.0
-	
+	pass
 	if Input.is_action_pressed("ui_up"):
 		throttle = 1.0
 	elif Input.is_action_pressed("ui_down"):
@@ -34,6 +35,15 @@ func _physics_process(delta):
 	
 	apply_car_physics(throttle, steering, brake, delta)
 
+func _process(delta):
+	if can_pickup_passenger and Input.is_action_just_pressed("pickup"):
+		if nearby_passenger and not has_passenger:
+			nearby_passenger.pickup()
+			has_passenger = true
+	# Your existing _process code (if any) goes here
+
+func drop_off_passenger():
+	has_passenger = false
 func apply_car_physics(throttle: float, steering: float, brake: float, delta: float):
 	var local_velocity = global_transform.basis_xform_inv(linear_velocity)
 	var engine_force = Vector2(0, -throttle * engine_power)
@@ -52,3 +62,7 @@ func apply_car_physics(throttle: float, steering: float, brake: float, delta: fl
 	var forward_velocity = global_transform.basis_xform(Vector2(0, local_velocity.y))
 	var side_velocity = global_transform.basis_xform(Vector2(local_velocity.x, 0))
 	linear_velocity = forward_velocity + side_velocity * drift_factor
+
+var can_pickup_passenger = false
+var nearby_passenger = null
+var has_passenger = false

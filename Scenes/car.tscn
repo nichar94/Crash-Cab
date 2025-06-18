@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://uhafctl3r84w"]
+
+[ext_resource type="Script" uid="uid://dt3xwf8xcs01w" path="res://Scripts/car.gd" id="1_go66d"]
+[ext_resource type="Texture2D" uid="uid://clvqate12rc6p" path="res://Assets/bk_cars1.a.png" id="2_1sfmx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0xm2m"]
+friction = 0.5
+bounce = 0.4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig5kc"]
+size = Vector2(46, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("2_1sfmx")
+region = Rect2(59, 112, 59, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1bvp3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2yge")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Car" type="RigidBody2D"]
+z_as_relative = false
+physics_material_override = SubResource("PhysicsMaterial_0xm2m")
+script = ExtResource("1_go66d")
+engine_power = 1000.0
+steering_power = 27.0
+drift_factor = 0.7
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1.5)
+shape = SubResource("RectangleShape2D_ig5kc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1bvp3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_smoothed = true
