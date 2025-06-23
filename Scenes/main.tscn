@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://k6mrulc1ywgd"]
+[gd_scene load_steps=9 format=4 uid="uid://k6mrulc1ywgd"]
 
 [ext_resource type="Script" uid="uid://bgyn51n5abax0" path="res://Scripts/main.gd" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cnwfde8rlvvlv" path="res://Assets/tilemap_packed.png" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://uhafctl3r84w" path="res://Scenes/car.tscn" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bwex72tlipf65" path="res://Scenes/passenger.tscn" id="5_21xkr"]
 [ext_resource type="FontFile" uid="uid://dckftup7hiwv5" path="res://Fonts/Kenney Future Narrow.ttf" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dbsanae7t6sdo" path="res://Scenes/drop_off_zone.tscn" id="6_6bp64"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("3_h2yge")
@@ -715,3 +717,10 @@ offset_bottom = 135.0
 theme_override_fonts/font = ExtResource("5_lquwl")
 theme_override_font_sizes/font_size = 50
 text = "Time: 60"
+
+[node name="Passenger" parent="." instance=ExtResource("5_21xkr")]
+position = Vector2(-519, -386)
+scale = Vector2(2.5, 2.5)
+
+[node name="DropOffZone" parent="Passenger" instance=ExtResource("6_6bp64")]
+position = Vector2(-234.4, 241.6)

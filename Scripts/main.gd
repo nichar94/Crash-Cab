@@ -18,7 +18,7 @@ func _ready():
 	# Update the label initially
 	update_timer_label()
 
-func _process(_delta):
+func _process(delta):
 	# Update label every frame for smooth display
 	update_timer_label()
 
@@ -28,7 +28,7 @@ func _on_timer_timeout():
 	# Check if time is up
 	if time_left <= 0:
 		timer.stop()  # Stop timer to prevent negative time
-		get_tree().change_scene_to_file("res://DeathScreen.tscn")
+		get_tree().change_scene_to_file("res://Scenes/DeathScreen.tscn")
 	else:
 		update_timer_label()  # Only update label if time isn't up
 

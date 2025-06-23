@@ -35,12 +35,13 @@ func _physics_process(delta):
 	
 	apply_car_physics(throttle, steering, brake, delta)
 
-func _process(delta):
+func _process(_delta):
 	if can_pickup_passenger and Input.is_action_just_pressed("pickup"):
 		if nearby_passenger and not has_passenger:
 			nearby_passenger.pickup()
 			has_passenger = true
-	# Your existing _process code (if any) goes here
+	if Input.is_action_just_pressed("pickup"):
+		print("1 key pressed!")# Your existing _process code (if any) goes here
 
 func drop_off_passenger():
 	has_passenger = false
@@ -66,3 +67,6 @@ func apply_car_physics(throttle: float, steering: float, brake: float, delta: fl
 var can_pickup_passenger = false
 var nearby_passenger = null
 var has_passenger = false
+
+
+	# Rest of your _process code

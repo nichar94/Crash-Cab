@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbsanae7t6sdo"]
+[gd_scene load_steps=4 format=3 uid="uid://dbsanae7t6sdo"]
 
-[ext_resource type="Script" uid="uid://72q1u5y4j6q5" path="res://Scenes/drop_off_zone.gd" id="1_vdgsb"]
+[ext_resource type="Script" uid="uid://72q1u5y4j6q5" path="res://Scripts/drop_off_zone.gd" id="1_vdgsb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4uex"]
 size = Vector2(301, 97)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdgsb"]
+font_size = 40
 
 [node name="DropOffZone" type="Area2D"]
 script = ExtResource("1_vdgsb")
@@ -12,6 +15,16 @@ script = ExtResource("1_vdgsb")
 position = Vector2(245, 115)
 shape = SubResource("RectangleShape2D_k4uex")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="SuccessLabel" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 177.0
+offset_bottom = 66.0
+text = "Success!"
+label_settings = SubResource("LabelSettings_vdgsb")
+
+[node name="SuccessTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="SuccessTimer" to="." method="_on_success_timer_timeout"]
