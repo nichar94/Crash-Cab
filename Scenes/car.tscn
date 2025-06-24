@@ -25,7 +25,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Car" type="RigidBody2D"]
+[node name="Car" type="RigidBody2D" groups=["Car"]]
 z_as_relative = false
 physics_material_override = SubResource("PhysicsMaterial_0xm2m")
 script = ExtResource("1_go66d")

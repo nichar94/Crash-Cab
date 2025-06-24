@@ -9,18 +9,22 @@ extends RigidBody2D
 var acceleration: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 var steer_direction: float = 0.0
+var can_pickup_passenger = false
+var nearby_passenger = null
+var has_passenger = false
 
 func _ready():
 	gravity_scale = 0
 	linear_damp = 1.0
 	angular_damp = 3.0
 	add_to_group("Car")
+	print("Car initialized, has_passenger:", has_passenger)
 
 func _physics_process(delta):
 	var throttle = 0.0
 	var steering = 0.0
 	var brake = 0.0
-	pass
+	
 	if Input.is_action_pressed("ui_up"):
 		throttle = 1.0
 	elif Input.is_action_pressed("ui_down"):
@@ -35,16 +39,25 @@ func _physics_process(delta):
 	
 	apply_car_physics(throttle, steering, brake, delta)
 
-func _process(_delta):
+func _process(delta):
 	if can_pickup_passenger and Input.is_action_just_pressed("pickup"):
 		if nearby_passenger and not has_passenger:
 			nearby_passenger.pickup()
 			has_passenger = true
+			print("Passenger picked up! has_passenger:", has_passenger)
+	
 	if Input.is_action_just_pressed("pickup"):
-		print("1 key pressed!")# Your existing _process code (if any) goes here
+		print("Pickup key pressed! has_passenger:", has_passenger)
 
 func drop_off_passenger():
-	has_passenger = false
+	if has_passenger:
+		has_passenger = false
+		print("Passenger dropped off! has_passenger:", has_passenger)
+		return true
+	else:
+		print("No passenger to drop off!")
+		return false
+
 func apply_car_physics(throttle: float, steering: float, brake: float, delta: float):
 	var local_velocity = global_transform.basis_xform_inv(linear_velocity)
 	var engine_force = Vector2(0, -throttle * engine_power)
@@ -63,10 +76,3 @@ func apply_car_physics(throttle: float, steering: float, brake: float, delta: fl
 	var forward_velocity = global_transform.basis_xform(Vector2(0, local_velocity.y))
 	var side_velocity = global_transform.basis_xform(Vector2(local_velocity.x, 0))
 	linear_velocity = forward_velocity + side_velocity * drift_factor
-
-var can_pickup_passenger = false
-var nearby_passenger = null
-var has_passenger = false
-
-
-	# Rest of your _process code
