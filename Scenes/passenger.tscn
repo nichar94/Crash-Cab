@@ -91,9 +91,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fydhf"]
-radius = 160.153
+radius = 60.8763
 
 [node name="Passenger" type="CharacterBody2D"]
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_lyrvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

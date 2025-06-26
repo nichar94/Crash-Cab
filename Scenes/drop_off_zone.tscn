@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://72q1u5y4j6q5" path="res://Scripts/drop_off_zone.gd" id="1_vdgsb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4uex"]
-size = Vector2(301, 113.5)
+size = Vector2(180.5, 79)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vdgsb"]
 font_size = 40
@@ -12,19 +12,25 @@ font_size = 40
 script = ExtResource("1_vdgsb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(245, 106.75)
+position = Vector2(184.75, 89.5)
 shape = SubResource("RectangleShape2D_k4uex")
-
-[node name="SuccessLabel" type="Label" parent="."]
-offset_left = 17.0
-offset_top = 11.0
-offset_right = 177.0
-offset_bottom = 66.0
-text = "Success!"
-label_settings = SubResource("LabelSettings_vdgsb")
 
 [node name="SuccessTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="SuccessLabel" type="CanvasLayer" parent="."]
+
+[node name="SuccessLabel" type="Label" parent="SuccessLabel"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 109.0
+offset_right = 80.0
+offset_bottom = 164.0
+grow_horizontal = 2
+text = "Success!"
+label_settings = SubResource("LabelSettings_vdgsb")
 
 [connection signal="timeout" from="SuccessTimer" to="." method="_on_success_timer_timeout"]
