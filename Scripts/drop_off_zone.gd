@@ -12,13 +12,16 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("Car"):
-		print("Car entered DropOffZone, has_passenger: ", body.has_passenger)
+		print("Car entered DropOffZone, has passenger: ", body.has_passenger)
 		if body.has_passenger:
 			var success = body.drop_off_passenger()
 			if success:
 				$SuccessLabel.show()
 				$SuccessTimer.start()
 				print("Drop-off successful, showing Success!")
+				
+				# ADD SCORE HERE - This is the key addition!
+				ScoreManager.add_score(1)
 				
 				# Spawn new passenger after successful drop-off
 				spawn_new_passenger()

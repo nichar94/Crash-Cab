@@ -15,6 +15,10 @@ run/main_scene="uid://dxakpknvjf13s"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://bydnhpnjvnhs8"
 
+[autoload]
+
+ScoreManager="*res://Scripts/ScoreManager.gd"
+
 [input]
 
 up={

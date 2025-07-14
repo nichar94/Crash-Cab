@@ -1,10 +1,10 @@
 extends RigidBody2D
 
 @export_group("Car Settings")
-@export var engine_power: float = 800.0
-@export var steering_power: float = 40.0
-@export var brake_power: float = 1200.0
-@export var drift_factor: float = 0.9
+@export var engine_power: float = 400.0
+@export var steering_power: float = 20
+@export var brake_power: float = 600.0
+@export var drift_factor: float = 0.45
 
 var acceleration: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
@@ -25,16 +25,16 @@ func _physics_process(delta):
 	var steering = 0.0
 	var brake = 0.0
 	
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("up"):
 		throttle = 1.0
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("down"):
 		throttle = -0.5
 	
 	var steering_direction = 1 if throttle >= 0 else -1 
 	
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		steering = -1.0 * steering_direction
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("right"):
 		steering = 1.0 * steering_direction
 	
 	apply_car_physics(throttle, steering, brake, delta)
