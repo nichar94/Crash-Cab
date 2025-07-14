@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbsanae7t6sdo"]
+[gd_scene load_steps=5 format=3 uid="uid://dbsanae7t6sdo"]
 
 [ext_resource type="Script" uid="uid://72q1u5y4j6q5" path="res://Scripts/drop_off_zone.gd" id="1_vdgsb"]
+[ext_resource type="FontFile" uid="uid://dckftup7hiwv5" path="res://Fonts/Kenney Future Narrow.ttf" id="2_k4uex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4uex"]
 size = Vector2(180.5, 79)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vdgsb"]
+font = ExtResource("2_k4uex")
 font_size = 40
 
 [node name="DropOffZone" type="Area2D"]

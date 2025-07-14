@@ -18,7 +18,7 @@ func _ready():
 		Vector2(700, 120),   # Upper area
 		Vector2(1000, 400),  # Lower right
 		Vector2(650, 300),   # Mid-left area
-		Vector2(-380, -940)
+		Vector2(-940, -380)
 	]
 
 func spawn_passenger():
