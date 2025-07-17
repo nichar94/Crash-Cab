@@ -17,7 +17,8 @@ var car_paths: Dictionary = {}  # Maps car to its path points
 
 func _ready():
 	# Convert Path2D nodes to point arrays and spawn cars
-	setup_paths_and_cars()
+	# Use call_deferred to avoid "busy setting up children" error
+	call_deferred("setup_paths_and_cars")
 
 func _draw():
 	if show_paths and Engine.is_editor_hint() == false:
@@ -25,12 +26,21 @@ func _draw():
 
 func setup_paths_and_cars():
 	"""Convert Path2D nodes to point arrays and spawn AI cars"""
+	print("Setting up paths and cars...")
+	print("Number of paths: ", paths.size())
+	
 	for i in range(paths.size()):
 		var path_2d = paths[i]
+		print("Processing path ", i, ": ", path_2d)
 		if path_2d != null:
 			var path_points = get_path_points(path_2d)
+			print("Path ", i, " has ", path_points.size(), " points")
 			if path_points.size() > 0:
 				spawn_ai_car_on_path(path_points, i)
+			else:
+				print("WARNING: Path ", i, " has no points!")
+		else:
+			print("WARNING: Path ", i, " is null!")
 
 func get_path_points(path_2d: Path2D) -> Array[Vector2]:
 	"""Convert a Path2D to an array of world position points"""
@@ -56,27 +66,34 @@ func get_path_points(path_2d: Path2D) -> Array[Vector2]:
 
 func spawn_ai_car_on_path(path_points: Array[Vector2], path_index: int):
 	"""Spawn an AI car and assign it to follow the given path"""
+	print("Attempting to spawn AI car on path ", path_index)
+	
 	if ai_car_scene == null:
 		print("ERROR: No AI car scene assigned to PathManager!")
+		print("Please drag your AICar.tscn file to the 'Ai Car Scene' field in the inspector!")
 		return
 	
+	print("AI car scene found: ", ai_car_scene)
 	var ai_car = ai_car_scene.instantiate()
+	print("AI car instantiated: ", ai_car)
 	
 	# Position car at start of path
 	if path_points.size() > 0:
 		ai_car.global_position = path_points[0]
+		print("Car positioned at: ", path_points[0])
 	
-	# Add car to scene
-	get_parent().add_child(ai_car)
+	# Add car to scene using call_deferred to avoid busy parent error
+	get_parent().call_deferred("add_child", ai_car)
+	print("Car queued to be added to scene. Parent: ", get_parent())
 	
-	# Set the car's path
-	ai_car.set_path(path_points)
+	# Set the car's path after it's added to the scene
+	ai_car.call_deferred("set_path", path_points)
 	
 	# Store references
 	ai_cars.append(ai_car)
 	car_paths[ai_car] = path_points
 	
-	print("Spawned AI car on path ", path_index, " with ", path_points.size(), " points")
+	print("Successfully queued AI car spawn on path ", path_index, " with ", path_points.size(), " points")
 
 func draw_all_paths():
 	"""Draw all paths for debugging"""
