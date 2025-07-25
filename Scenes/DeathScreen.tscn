@@ -40,8 +40,8 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 648.0
+offset_right = 1157.0
+offset_bottom = 658.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_0x2kd")
 
 [node name="return" type="Button" parent="."]
