@@ -29,9 +29,6 @@ animations = [{
 z_as_relative = false
 physics_material_override = SubResource("PhysicsMaterial_0xm2m")
 script = ExtResource("1_go66d")
-engine_power = 1000.0
-steering_power = 27.0
-drift_factor = 0.7
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
