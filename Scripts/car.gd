@@ -1,10 +1,10 @@
 extends RigidBody2D
 
 @export_group("Car Settings")
-@export var engine_power: float = 400.0
-@export var steering_power: float = 20
-@export var brake_power: float = 600.0
-@export var drift_factor: float = 0.45
+@export var engine_power: float = 950.0
+@export var steering_power: float = 28.4867
+@export var brake_power: float = 1200.0
+@export var drift_factor: float = 0.35
 
 var acceleration: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO

@@ -1,0 +1,29 @@
+[gd_scene load_steps=15 format=3 uid="uid://46neo07w0ok1"]
+
+[ext_resource type="Script" uid="uid://dw5687qxoi3ee" path="res://Scripts/semi_3d_car.gd" id="1_ybwsl"]
+[ext_resource type="Texture2D" uid="uid://dgbr58bpf6kdv" path="res://Assets/Yellowcar/slice_00.png" id="2_ib5xh"]
+[ext_resource type="Texture2D" uid="uid://bicn2c3us5c4d" path="res://Assets/Yellowcar/slice_01.png" id="3_n1bcl"]
+[ext_resource type="Texture2D" uid="uid://bcc4o77e0mjva" path="res://Assets/Yellowcar/slice_02.png" id="4_8v1gs"]
+[ext_resource type="Texture2D" uid="uid://b60g6lyxde21v" path="res://Assets/Yellowcar/slice_03.png" id="5_068t1"]
+[ext_resource type="Texture2D" uid="uid://bn6mgfsbms4nb" path="res://Assets/Yellowcar/slice_04.png" id="6_etvem"]
+[ext_resource type="Texture2D" uid="uid://ceu0kapgmp2fq" path="res://Assets/Yellowcar/slice_05.png" id="7_dnsk4"]
+[ext_resource type="Texture2D" uid="uid://bbqdmkqbg5p2w" path="res://Assets/Yellowcar/slice_06.png" id="8_pn2g1"]
+[ext_resource type="Texture2D" uid="uid://bqb811226xlbv" path="res://Assets/Yellowcar/slice_07.png" id="9_go4ce"]
+[ext_resource type="Texture2D" uid="uid://tgmbn6h0ursa" path="res://Assets/Yellowcar/slice_08.png" id="10_kvb7u"]
+[ext_resource type="Texture2D" uid="uid://3crk05a0qh13" path="res://Assets/Yellowcar/slice_09.png" id="11_v2ael"]
+[ext_resource type="Texture2D" uid="uid://b8qjnj668i3xt" path="res://Assets/Yellowcar/slice_10.png" id="12_yhbl5"]
+[ext_resource type="Texture2D" uid="uid://co4o2g5hsddan" path="res://Assets/Yellowcar/slice_11.png" id="13_dbrl8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn1jy"]
+
+[node name="Semi3DCar" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_ybwsl")
+sprite_textures = Array[Texture2D]([ExtResource("2_ib5xh"), ExtResource("3_n1bcl"), ExtResource("4_8v1gs"), ExtResource("5_068t1"), ExtResource("6_etvem"), ExtResource("7_dnsk4"), ExtResource("8_pn2g1"), ExtResource("9_go4ce"), ExtResource("10_kvb7u"), ExtResource("11_v2ael"), ExtResource("12_yhbl5"), ExtResource("13_dbrl8")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_bn1jy")
+
+[node name="SpriteStack" type="Node2D" parent="."]
+scale = Vector2(5, 5)
