@@ -1,27 +1,63 @@
-[gd_scene load_steps=7 format=3 uid="uid://uhafctl3r84w"]
+[gd_scene load_steps=10 format=3 uid="uid://uhafctl3r84w"]
 
 [ext_resource type="Script" uid="uid://dt3xwf8xcs01w" path="res://Scripts/car.gd" id="1_go66d"]
-[ext_resource type="Texture2D" uid="uid://clvqate12rc6p" path="res://Assets/bk_cars1.a.png" id="2_1sfmx"]
+[ext_resource type="Texture2D" uid="uid://d3vhdgurdmowx" path="res://tilemap_packed.png" id="2_go66d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0xm2m"]
 friction = 0.5
 bounce = 0.4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig5kc"]
-size = Vector2(46, 99)
+size = Vector2(70, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
-atlas = ExtResource("2_1sfmx")
-region = Rect2(59, 112, 59, 112)
+[sub_resource type="AtlasTexture" id="AtlasTexture_aky6y"]
+atlas = ExtResource("2_go66d")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u41r7"]
+atlas = ExtResource("2_go66d")
+region = Rect2(48, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi23e"]
+atlas = ExtResource("2_go66d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sfmx"]
+atlas = ExtResource("2_go66d")
+region = Rect2(80, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1bvp3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h2yge")
+"texture": SubResource("AtlasTexture_aky6y")
 }],
 "loop": true,
-"name": &"default",
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u41r7")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi23e")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sfmx")
+}],
+"loop": true,
+"name": &"up",
 "speed": 5.0
 }]
 
@@ -32,11 +68,13 @@ script = ExtResource("1_go66d")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 1.5)
+position = Vector2(2, 12.5)
 shape = SubResource("RectangleShape2D_ig5kc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.875, 3.875)
 sprite_frames = SubResource("SpriteFrames_1bvp3")
+animation = &"left"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.7, 0.7)
