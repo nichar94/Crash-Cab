@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://uhafctl3r84w"]
 
 [ext_resource type="Script" uid="uid://dt3xwf8xcs01w" path="res://Scripts/car.gd" id="1_go66d"]
-[ext_resource type="Texture2D" uid="uid://d3vhdgurdmowx" path="res://tilemap_packed.png" id="2_go66d"]
+[ext_resource type="Texture2D" uid="uid://d3vhdgurdmowx" path="res://Assets/tilemap_packed (2).png" id="2_go66d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0xm2m"]
 friction = 0.5
@@ -72,9 +72,9 @@ position = Vector2(2, 12.5)
 shape = SubResource("RectangleShape2D_ig5kc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3.875, 3.875)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1bvp3")
-animation = &"left"
+animation = &"right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.7, 0.7)
