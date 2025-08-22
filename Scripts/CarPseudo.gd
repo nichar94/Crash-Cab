@@ -100,13 +100,9 @@ func apply_car_movement(input: Vector2, delta: float):
 		# Apply friction when no input
 		current_speed = move_toward(current_speed, 0, friction * delta)
 	
-	# Handle rotation (only when moving)
-	if abs(current_speed) > 10:  # Only turn when moving with sufficient speed
-		rotation += rotation_dir * turn_speed * delta * (abs(current_speed) / max_speed)
-	
-	# Calculate velocity based on rotation and speed
+	# Calculate velocity based on sprite rotation and speed
 	# Car sprites face right, so use Vector2(1, 0) as forward direction
-	velocity = Vector2(current_speed, 0).rotated(rotation)
+	velocity = Vector2(current_speed, 0).rotated(sprite_rotation)
 
 func update_sprite_stack_rotation():
 	# Test: Each sprite rotates around its own center at the same speed
