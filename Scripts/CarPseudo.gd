@@ -1,4 +1,4 @@
-@tool
+
 extends CharacterBody2D
 
 @export_group("Car Settings")
@@ -17,6 +17,7 @@ extends CharacterBody2D
 # Car movement variables
 var current_speed: float = 0.0
 var rotation_dir: float = 0.0
+var sprite_rotation: float = 0.0  # For testing sprite rotation
 
 # Sprite stack references
 var sprite_layers: Array[Sprite2D] = []
@@ -80,6 +81,11 @@ func _physics_process(delta):
 	
 	# Apply car physics
 	apply_car_movement(input_vector, delta)
+	
+	# Sprite rotation follows car rotation for proper sprite stacking
+	sprite_rotation += rotation_dir * turn_speed * delta
+	print(rad_to_deg(sprite_rotation))
+	
 	update_sprite_stack_rotation()
 	
 	# Move the character
@@ -103,25 +109,9 @@ func apply_car_movement(input: Vector2, delta: float):
 	velocity = Vector2(current_speed, 0).rotated(rotation)
 
 func update_sprite_stack_rotation():
-	# Each sprite rotates around its own center with configurable offsets
+	# Test: Each sprite rotates around its own center at the same speed
 	for i in range(sprite_layers.size()):
 		var sprite = sprite_layers[i]
 		
-		# Sprites should maintain their orientation relative to the car body
-		# Since car sprites face right by default, no additional rotation needed
-		sprite.rotation = 0
-		
-		# Add rotational offset per layer (for spiral/twist effects)
-		sprite.rotation += i * rotational_offset
-		
-		# Apply position offsets (these can create interesting stacking effects)
-		var layer_horizontal_offset = i * horizontal_offset
-		var layer_vertical_offset = i * vertical_offset
-		
-		# Keep original stacked position but add offsets
-		sprite.position = Vector2(layer_horizontal_offset, -i * stack_height + layer_vertical_offset)
-		
-		# Optional: Add subtle tilt effect during turns
-		if enable_tilt_effect:
-			var tilt_amount = rotation_dir * 0.02 * (abs(current_speed) / max_speed)
-			sprite.rotation += tilt_amount
+		# All sprites rotate at the same speed around their own origins
+		sprite.rotation = sprite_rotation + (i * rotational_offset)

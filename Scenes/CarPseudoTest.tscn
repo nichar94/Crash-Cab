@@ -6,7 +6,6 @@
 
 [node name="CarController" parent="." instance=ExtResource("1_8rg7w")]
 vertical_offset = 0.555
-enable_tilt_effect = false
 
 [node name="Camera2D" type="Camera2D" parent="CarController"]
 zoom = Vector2(2, 2)
