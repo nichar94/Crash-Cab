@@ -18,7 +18,9 @@ extends CharacterBody2D
 var current_speed: float = 0.0
 var rotation_dir: float = 0.0
 var sprite_rotation: float = 0.0  # For testing sprite rotation
-
+var can_pickup_passenger = false
+var nearby_passenger = null
+var has_passenger = false
 # Sprite stack references
 var sprite_layers: Array[Sprite2D] = []
 @onready var sprite_stack: Node2D = $SpriteStack
@@ -28,7 +30,8 @@ func _ready():
 	collect_sprite_layers()
 	# Initialize the sprite stack positions
 	setup_sprite_stack()
-
+	add_to_group("Car")
+	print("Car initialized, has_passenger:", has_passenger)
 func collect_sprite_layers():
 	sprite_layers.clear()
 	
@@ -111,3 +114,21 @@ func update_sprite_stack_rotation():
 		
 		# All sprites rotate at the same speed around their own origins
 		sprite.rotation = sprite_rotation + (i * rotational_offset)
+func _process(delta):
+	if can_pickup_passenger and Input.is_action_just_pressed("pickup"):
+		if nearby_passenger and not has_passenger:
+			nearby_passenger.pickup()
+			has_passenger = true
+			print("Passenger picked up! has_passenger:", has_passenger)
+	
+	if Input.is_action_just_pressed("pickup"):
+		print("Pickup key pressed! has_passenger:", has_passenger)
+
+func drop_off_passenger():
+	if has_passenger:
+		has_passenger = false
+		print("Passenger dropped off! has_passenger:", has_passenger)
+		return true
+	else:
+		print("No passenger to drop off!")
+		return false

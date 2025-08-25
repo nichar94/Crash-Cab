@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca4mqdhhkwlta"]
+
+[ext_resource type="Texture2D" uid="uid://b4xbvmduxc0dp" path="res://Assets/RED_ARROW2.png" id="1_1ak7f"]
+[ext_resource type="Script" uid="uid://b8740i5o4b142" path="res://Scenes/DirectionalArrow.gd" id="1_72ct0"]
+
+[node name="DirectionalArrow" type="Node2D"]
+script = ExtResource("1_72ct0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_1ak7f")
