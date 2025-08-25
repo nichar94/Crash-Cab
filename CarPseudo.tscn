@@ -1,0 +1,73 @@
+[gd_scene load_steps=15 format=3 uid="uid://bxc5ejadcymyu"]
+
+[ext_resource type="Script" uid="uid://do64pw6hnws0v" path="res://Scripts/CarPseudo.gd" id="1_0g8jv"]
+[ext_resource type="Texture2D" uid="uid://dgbr58bpf6kdv" path="res://Assets/Yellowcar/slice_00.png" id="1_1x4vm"]
+[ext_resource type="Texture2D" uid="uid://bicn2c3us5c4d" path="res://Assets/Yellowcar/slice_01.png" id="2_m1qqg"]
+[ext_resource type="Texture2D" uid="uid://bcc4o77e0mjva" path="res://Assets/Yellowcar/slice_02.png" id="3_sepjq"]
+[ext_resource type="Texture2D" uid="uid://b60g6lyxde21v" path="res://Assets/Yellowcar/slice_03.png" id="4_nowjf"]
+[ext_resource type="Texture2D" uid="uid://bn6mgfsbms4nb" path="res://Assets/Yellowcar/slice_04.png" id="5_vey8p"]
+[ext_resource type="Texture2D" uid="uid://ceu0kapgmp2fq" path="res://Assets/Yellowcar/slice_05.png" id="6_ppmgm"]
+[ext_resource type="Texture2D" uid="uid://bbqdmkqbg5p2w" path="res://Assets/Yellowcar/slice_06.png" id="7_v6fmo"]
+[ext_resource type="Texture2D" uid="uid://bqb811226xlbv" path="res://Assets/Yellowcar/slice_07.png" id="8_i11cv"]
+[ext_resource type="Texture2D" uid="uid://tgmbn6h0ursa" path="res://Assets/Yellowcar/slice_08.png" id="9_3yw6q"]
+[ext_resource type="Texture2D" uid="uid://3crk05a0qh13" path="res://Assets/Yellowcar/slice_09.png" id="10_x8yh2"]
+[ext_resource type="Texture2D" uid="uid://b8qjnj668i3xt" path="res://Assets/Yellowcar/slice_10.png" id="11_gcpgh"]
+[ext_resource type="Texture2D" uid="uid://co4o2g5hsddan" path="res://Assets/Yellowcar/slice_11.png" id="12_v5y7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_car"]
+size = Vector2(30, 15)
+
+[node name="CarController" type="CharacterBody2D"]
+script = ExtResource("1_0g8jv")
+
+[node name="SpriteStack" type="Node2D" parent="."]
+
+[node name="Slice00" type="Sprite2D" parent="SpriteStack"]
+texture = ExtResource("1_1x4vm")
+
+[node name="Slice01" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, 1)
+texture = ExtResource("2_m1qqg")
+
+[node name="Slice02" type="Sprite2D" parent="SpriteStack"]
+texture = ExtResource("3_sepjq")
+
+[node name="Slice03" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -1)
+texture = ExtResource("4_nowjf")
+
+[node name="Slice04" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -2)
+texture = ExtResource("5_vey8p")
+
+[node name="Slice05" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -3)
+texture = ExtResource("6_ppmgm")
+
+[node name="Slice06" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -4)
+texture = ExtResource("7_v6fmo")
+
+[node name="Slice07" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -5)
+texture = ExtResource("8_i11cv")
+
+[node name="Slice08" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -6)
+texture = ExtResource("9_3yw6q")
+
+[node name="Slice09" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -6)
+texture = ExtResource("10_x8yh2")
+
+[node name="Slice10" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -7)
+texture = ExtResource("11_gcpgh")
+
+[node name="Slice11" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -7)
+texture = ExtResource("12_v5y7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(29, 1)
+shape = SubResource("RectangleShape2D_car")
