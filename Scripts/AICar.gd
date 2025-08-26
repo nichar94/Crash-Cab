@@ -1,16 +1,29 @@
 extends CharacterBody2D
-
 # Simple AI car for testing
 @export var speed: float = 120.0
 @export var rotation_speed: float = 5.0
 @export var path_follow_distance: float = 20.0
-
 var path_points: Array[Vector2] = []
 var current_path_index: int = 0
 var target_position: Vector2
 var is_following_path: bool = false
+var sprite_layers: Array[Node] = []
+var rotation_dir = 0
+@onready var sprite_stack: Node2D = $SpriteStack
+var sprite_rotation: float = 0.0  # For testing sprite rotation
+
+func update_sprite_stack_rotation():
+	# Counter-rotate the sprite stack to cancel out the parent's rotation
+	sprite_stack.rotation = -rotation
+	
+	# Then apply the desired rotation to each individual sprite
+	for i in range(sprite_layers.size()):
+		var sprite = sprite_layers[i]
+		# All sprites rotate at the same speed around their own origins
+		sprite.rotation = sprite_rotation
 
 func _ready():
+	sprite_layers = sprite_stack.get_children()
 	print("Minimal AI Car ready at: ", global_position)
 	add_to_group("AICars")
 	
@@ -37,6 +50,12 @@ func _ready():
 func _physics_process(delta):
 	if is_following_path and path_points.size() > 0:
 		follow_path(delta)
+		
+		sprite_rotation = rotation
+		print(rad_to_deg(sprite_rotation))
+	
+		update_sprite_stack_rotation()
+		
 		move_and_slide()
 
 func set_path(new_path: Array[Vector2]):

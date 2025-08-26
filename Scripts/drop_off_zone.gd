@@ -33,15 +33,31 @@ func _on_body_entered(body):
 func spawn_new_passenger():
 	# Method 1: Use assigned spawner from inspector
 	if passenger_spawner != null and passenger_spawner.has_method("spawn_passenger"):
-		passenger_spawner.spawn_passenger()
+		var new_passenger = passenger_spawner.spawn_passenger()
+		# NEW: Register the new passenger with ArrowManager
+		register_passenger_with_arrow_manager(new_passenger)
 		return
 	
 	# Method 2: Find spawner in scene by name
 	var spawner = get_tree().current_scene.get_node_or_null("PassengerSpawner")
 	if spawner != null and spawner.has_method("spawn_passenger"):
-		spawner.spawn_passenger()
+		var new_passenger = spawner.spawn_passenger()
+		# NEW: Register the new passenger with ArrowManager
+		register_passenger_with_arrow_manager(new_passenger)
 	else:
 		print("ERROR: Could not find PassengerSpawner node in scene!")
+
+# NEW: Helper function to register new passengers with ArrowManager
+func register_passenger_with_arrow_manager(passenger):
+	if passenger == null:
+		return
+		
+	var arrow_manager = get_node("../ArrowManager")
+	if arrow_manager and arrow_manager.has_method("register_new_passenger"):
+		arrow_manager.register_new_passenger(passenger)
+		print("DropOffZone: Registered new passenger with ArrowManager")
+	else:
+		print("DropOffZone: Could not find ArrowManager to register passenger")
 
 func _on_success_timer_timeout():
 	$SuccessLabel.hide()

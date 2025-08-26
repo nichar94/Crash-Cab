@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd5eepyq31kgm"]
+[gd_scene load_steps=5 format=3 uid="uid://bd5eepyq31kgm"]
 
 [ext_resource type="Script" uid="uid://ka3ft1gl6qcl" path="res://Scripts/AICar.gd" id="1_tsf1l"]
 [ext_resource type="Texture2D" uid="uid://clvqate12rc6p" path="res://Assets/bk_cars1.a.png" id="2_tsf1l"]
+[ext_resource type="Texture2D" uid="uid://bbwf2h0lgtbg0" path="res://Assets/SpriteStacks/BlueCar.png" id="3_01y35"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsf1l"]
 size = Vector2(41, 83)
@@ -11,6 +12,7 @@ script = ExtResource("1_tsf1l")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 7.15256e-07)
 rotation = 1.5708
 scale = Vector2(1.15, 1.15)
@@ -23,3 +25,52 @@ position = Vector2(1.5, -0.499999)
 rotation = 1.5708
 scale = Vector2(1.2, 1.2)
 shape = SubResource("RectangleShape2D_tsf1l")
+
+[node name="SpriteStack" type="Node2D" parent="."]
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteStack"]
+texture = ExtResource("3_01y35")
+hframes = 9
+
+[node name="Sprite2D2" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -1)
+texture = ExtResource("3_01y35")
+hframes = 9
+frame = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -2)
+texture = ExtResource("3_01y35")
+hframes = 9
+frame = 3
+
+[node name="Sprite2D4" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -3)
+texture = ExtResource("3_01y35")
+hframes = 9
+frame = 4
+
+[node name="Sprite2D5" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -4)
+texture = ExtResource("3_01y35")
+hframes = 9
+frame = 5
+
+[node name="Sprite2D6" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -5)
+texture = ExtResource("3_01y35")
+hframes = 9
+frame = 6
+
+[node name="Sprite2D7" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -5)
+texture = ExtResource("3_01y35")
+hframes = 9
+frame = 7
+
+[node name="Sprite2D8" type="Sprite2D" parent="SpriteStack"]
+position = Vector2(0, -5)
+texture = ExtResource("3_01y35")
+hframes = 9
+frame = 8

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbsanae7t6sdo" path="res://Scenes/drop_off_zone.tscn" id="6_6bp64"]
 [ext_resource type="Script" uid="uid://83vqs0jryqsi" path="res://Scenes/passenger_spawner.gd" id="7_6bp64"]
 [ext_resource type="Script" uid="uid://vbung54uyidm" path="res://Scenes/scoreUI.gd" id="8_344ge"]
-[ext_resource type="PackedScene" uid="uid://bxc5ejadcymyu" path="res://Scenes/CarPseudo.tscn" id="9_hptm8"]
+[ext_resource type="PackedScene" uid="uid://bxc5ejadcymyu" path="res://CarPseudo.tscn" id="9_hptm8"]
 [ext_resource type="Script" uid="uid://b0uqgokupjagb" path="res://Scripts/ArrowManager.gd" id="11_d1ilt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bicn2c3us5c4d"
-path="res://.godot/imported/slice_01.png-986032e718006a5976d406f91bdf8e62.ctex"
+uid="uid://3crk05a0qh13"
+path="res://.godot/imported/slice_09.png-f6e98d5e1d5b5b58e5b4b9b2ca1a5298.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Yellowcar/slice_01.png"
-dest_files=["res://.godot/imported/slice_01.png-986032e718006a5976d406f91bdf8e62.ctex"]
+source_file="res://Assets/SpriteStacks/slice_09.png"
+dest_files=["res://.godot/imported/slice_09.png-f6e98d5e1d5b5b58e5b4b9b2ca1a5298.ctex"]
 
 [params]
 

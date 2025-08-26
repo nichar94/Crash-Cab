@@ -87,7 +87,7 @@ func _physics_process(delta):
 	
 	# Sprite rotation follows car rotation for proper sprite stacking
 	sprite_rotation += rotation_dir * turn_speed * delta
-	print(rad_to_deg(sprite_rotation))
+	#print(rad_to_deg(sprite_rotation))
 	
 	update_sprite_stack_rotation()
 	
@@ -114,6 +114,7 @@ func update_sprite_stack_rotation():
 		
 		# All sprites rotate at the same speed around their own origins
 		sprite.rotation = sprite_rotation + (i * rotational_offset)
+		
 func _process(delta):
 	if can_pickup_passenger and Input.is_action_just_pressed("pickup"):
 		if nearby_passenger and not has_passenger:
@@ -128,6 +129,13 @@ func drop_off_passenger():
 	if has_passenger:
 		has_passenger = false
 		print("Passenger dropped off! has_passenger:", has_passenger)
+		
+		# NEW: Notify ArrowManager that passenger was dropped off
+		var arrow_manager = get_node("../ArrowManager")
+		if arrow_manager:
+			arrow_manager.passenger_dropped_off()
+			print("CarController: Notified ArrowManager of dropoff")
+		
 		return true
 	else:
 		print("No passenger to drop off!")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcc4o77e0mjva"
-path="res://.godot/imported/slice_02.png-4f521627003a23e427bc8142e3de8613.ctex"
+uid="uid://bkwu4s5i7urvy"
+path="res://.godot/imported/BrownMotorcycle.png-68b19cf6028a97bdb0fd25bbe4c93fe7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Yellowcar/slice_02.png"
-dest_files=["res://.godot/imported/slice_02.png-4f521627003a23e427bc8142e3de8613.ctex"]
+source_file="res://Assets/SpriteStacks/BrownMotorcycle.png"
+dest_files=["res://.godot/imported/BrownMotorcycle.png-68b19cf6028a97bdb0fd25bbe4c93fe7.ctex"]
 
 [params]
 

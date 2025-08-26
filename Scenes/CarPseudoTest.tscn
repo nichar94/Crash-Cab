@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdkxr65sxldc7"]
 
-[ext_resource type="PackedScene" uid="uid://bxc5ejadcymyu" path="res://CarPseudo.tscn" id="1_8rg7w"]
+[ext_resource type="PackedScene" uid="uid://bxc5ejadcymyu" path="res://Scenes/CarPseudo.tscn" id="1_8rg7w"]
 
 [node name="CarPseudoTest" type="Node2D"]
 

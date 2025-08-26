@@ -36,6 +36,9 @@ func spawn_passenger():
 	# Create new passenger instance
 	var new_passenger = passenger_scene.instantiate()
 	
+	# NEW: Add passenger to group before adding to scene
+	new_passenger.add_to_group("passengers")
+	
 	# Add to the scene tree (assuming this spawner is in the main scene)
 	get_tree().current_scene.add_child(new_passenger)
 	

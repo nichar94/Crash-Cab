@@ -3,7 +3,10 @@ extends CharacterBody2D
 signal passenger_picked_up(passenger)
 
 func _ready():
-	# Connect the Area2D's body_entered and body_exited signals
+	# NEW: Add passenger to group so ArrowManager can find it
+	add_to_group("passengers")
+	
+	# Your existing code:
 	$Area2D.body_entered.connect(_on_area_2d_body_entered)
 	$Area2D.body_exited.connect(_on_area_2d_body_exited)
 
