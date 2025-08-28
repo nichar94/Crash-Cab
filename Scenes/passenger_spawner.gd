@@ -8,9 +8,9 @@ func _ready():
 	# Define safe spawn points based on your map
 	# These should be on sidewalks, building entrances, etc.
 	spawn_points = [
-		Vector2(600, 180),   # Near buildings on the left
-		Vector2(800, 250),   # Sidewalk area
-		Vector2(950, 180),   # Near the roundabout
+		Vector2(700, -250),   # Near buildings on the left
+		Vector2(700, 300),   # Sidewalk area
+		Vector2(750, 2250),   # Near the roundabout
 		Vector2(1100, 300),  # Right side buildings
 		Vector2(550, 350),   # Lower left area
 		Vector2(850, 450),   # Lower middle
@@ -18,7 +18,7 @@ func _ready():
 		Vector2(700, 120),   # Upper area
 		Vector2(1000, 400),  # Lower right
 		Vector2(650, 300),   # Mid-left area
-		Vector2(-940, -380)
+		Vector2(1400, -1350)
 	]
 
 func spawn_passenger():
@@ -39,11 +39,11 @@ func spawn_passenger():
 	# NEW: Add passenger to group before adding to scene
 	new_passenger.add_to_group("passengers")
 	
-	# Add to the scene tree (assuming this spawner is in the main scene)
-	get_tree().current_scene.add_child(new_passenger)
+	# FIX: Use call_deferred to avoid "flushing queries" error
+	get_tree().current_scene.call_deferred("add_child", new_passenger)
 	
-	# Set position
-	new_passenger.global_position = spawn_position
+	# FIX: Set position using call_deferred as well
+	new_passenger.call_deferred("set_global_position", spawn_position)
 	
 	print("New passenger spawned at: ", spawn_position)
 	return new_passenger

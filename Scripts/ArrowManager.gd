@@ -12,21 +12,39 @@ var game_state: String = "pickup"  # "pickup" or "dropoff"
 var arrow_scene = preload("res://Scenes/DirectionalArrow.tscn")
 
 func _ready():
-	# Find references - they're siblings, so go up one level then down
-	player = get_node("res://Scenes/CarPseudo.tscn")
-	building = get_node("res://Scenes/drop_off_zone.tscn")
+	print("ArrowManager: Starting setup...")
+	
+	# Since ArrowManager, CarController, and DropOffZone are all siblings under Game:
+	player = get_node("../CarController")
+	building = get_node("../DropOffZone")
+	
+	print("ArrowManager: Found player: ", player)
+	print("ArrowManager: Found building: ", building)
+	
+	if not player:
+		print("ERROR: Could not find CarController!")
+		return
+	if not building:
+		print("ERROR: Could not find DropOffZone!")
+		return
 	
 	# Create arrow instance
 	arrow = arrow_scene.instantiate()
 	add_child(arrow)
 	arrow.hide_arrow()
+	print("ArrowManager: Arrow created and hidden")
 	
 	# Connect to existing passengers and future spawned passengers
 	connect_to_existing_passengers()
 	update_passengers_list()
+	print("ArrowManager: Setup complete")
 
 func _process(delta):
 	if not arrow or not player:
+		if not arrow:
+			print("ArrowManager: No arrow!")
+		if not player:
+			print("ArrowManager: No player!")
 		return
 		
 	if game_state == "pickup":
@@ -41,17 +59,27 @@ func handle_pickup_state():
 	if nearest_passenger and nearest_passenger != current_target:
 		current_target = nearest_passenger
 		arrow.update_target(current_target.global_position)
+		arrow.update_player_position(player.global_position)  # Send player position
 		arrow.show_arrow()
+		print("ArrowManager: Pointing arrow to passenger at: ", current_target.global_position)
 	elif not nearest_passenger:
 		arrow.hide_arrow()
 		current_target = null
+		print("ArrowManager: No passengers found, hiding arrow")
+	elif nearest_passenger == current_target:
+		# Update player position even if target hasn't changed
+		arrow.update_player_position(player.global_position)
 
 func handle_dropoff_state():
 	# Point to building
 	if building and current_target != building:
 		current_target = building
 		arrow.update_target(building.global_position)
+		arrow.update_player_position(player.global_position)  # Send player position
 		arrow.show_arrow()
+	elif current_target == building:
+		# Update player position even if target hasn't changed
+		arrow.update_player_position(player.global_position)
 
 func find_nearest_passenger() -> Node2D:
 	update_passengers_list()
@@ -79,12 +107,16 @@ func update_passengers_list():
 	
 	# Add any new passengers from the scene
 	var all_passengers = get_tree().get_nodes_in_group("passengers")
+	print("ArrowManager: Found ", all_passengers.size(), " passengers in 'passengers' group")
+	
 	for passenger in all_passengers:
 		if passenger not in passengers:
 			passengers.append(passenger)
 			# Connect to the passenger's pickup signal
 			if not passenger.passenger_picked_up.is_connected(_on_passenger_picked_up):
 				passenger.passenger_picked_up.connect(_on_passenger_picked_up)
+	
+	print("ArrowManager: Total passengers tracked: ", passengers.size())
 
 func connect_to_existing_passengers():
 	# Connect to any passengers that already exist in the scene
