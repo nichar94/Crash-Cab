@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dckftup7hiwv5" path="res://Fonts/Kenney Future Narrow.ttf" id="2_k4uex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4uex"]
-size = Vector2(258.5, 116)
+size = Vector2(247.5, 53)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vdgsb"]
 font = ExtResource("2_k4uex")
@@ -14,7 +14,7 @@ font_size = 40
 script = ExtResource("1_vdgsb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(223.75, 108)
+position = Vector2(218.25, 76.5)
 shape = SubResource("RectangleShape2D_k4uex")
 
 [node name="SuccessTimer" type="Timer" parent="."]

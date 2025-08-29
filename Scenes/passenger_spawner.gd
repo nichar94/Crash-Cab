@@ -11,14 +11,16 @@ func _ready():
 		Vector2(700, -250),   # Near buildings on the left
 		Vector2(700, 300),   # Sidewalk area
 		Vector2(750, 2250),   # Near the roundabout
-		Vector2(1100, 300),  # Right side buildings
-		Vector2(550, 350),   # Lower left area
-		Vector2(850, 450),   # Lower middle
-		Vector2(1200, 250),  # Far right
+		Vector2(-1700,-375),  # Right side buildings
+		Vector2(1750, 750),   # Lower left area
+		Vector2(-1300,-1650),   # Lower middle
+		Vector2(-400,1200),  # Far right
 		Vector2(700, 120),   # Upper area
 		Vector2(1000, 400),  # Lower right
 		Vector2(650, 300),   # Mid-left area
-		Vector2(1400, -1350)
+		Vector2(1400,-1350),
+		Vector2(2900,700),
+		Vector2(-2075,-1650)
 	]
 
 func spawn_passenger():

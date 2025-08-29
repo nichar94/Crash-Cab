@@ -3,7 +3,7 @@ extends Node2D
 @onready var sprite = $Sprite2D
 var target_position: Vector2
 var player_position: Vector2  # Store player position separately
-var offset_distance: float = 60.0  # Distance from player center
+var offset_distance: float = 100.0  # Distance from player center
 
 func _ready():
 	# Make sure the arrow is visible
