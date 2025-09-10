@@ -1,7 +1,7 @@
 extends Area2D
-
 # Reference to the passenger spawner node in scene
 @export var passenger_spawner: Node # Drag the PassengerSpawner node here in inspector
+@onready var main_scene = get_tree().current_scene  # NEW: Reference to main scene
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -22,6 +22,13 @@ func _on_body_entered(body):
 				
 				# ADD SCORE HERE - This is the key addition!
 				ScoreManager.add_score(1)
+				
+				# ADD TIME BONUS - New addition!
+				if main_scene.has_method("add_time"):
+					main_scene.add_time(10)
+					print("Added 10 seconds bonus time!")
+				else:
+					print("ERROR: Could not find add_time method in main scene")
 				
 				# Spawn new passenger after successful drop-off
 				spawn_new_passenger()
